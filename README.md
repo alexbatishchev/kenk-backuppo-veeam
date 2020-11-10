@@ -14,7 +14,7 @@ v 1.03
     * monthly every 1st sunday at 01:00
 * deploy windows server with Veeam Backup & Replication and PowerCli
 * set options in settings.ps1 file (like backup storage location, VC credentials and e-mail alert adress)
-* set task scheduler to run script at desired time
+* set task scheduler at your server to run script at desired time
     * run a program %SystemRoot%\system32\WindowsPowerShell\v1.0\powershell.exe
     * with arguments C:\scripts\kenk-backuppo-veeam\backuppo-veeam.ps1 -sBackupType weekly
     * with working path C:\scripts\kenk-backuppo-veeam\
