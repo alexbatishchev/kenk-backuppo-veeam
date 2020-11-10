@@ -1,7 +1,10 @@
 # kenk-backuppo-veeam
 Tool to make backup of vSphere's VMs by desired backup plan with free version of Veeam Backup & Replication
+
 Searching for virtual machines in vSphere tagged with set of notes and starting Veeam Backup for it
+
 Original script VeeamZIP.ps1 by Vladimir Eremin http://forums.veeam.com/member31097.html
+
 v 1.03
 
 # how to use
