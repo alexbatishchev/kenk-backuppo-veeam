@@ -19,7 +19,7 @@ $sVCLogin = "administrator@vsphere.local"
 $sVCPassword = "password"
 
 # this will be first part of searching tag like {veeam2-daily}
-$veeamId = "veeam2"
+$veeamId = "veeam1"
 
 
 ###########################################
