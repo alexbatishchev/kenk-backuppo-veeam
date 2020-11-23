@@ -25,15 +25,15 @@ $Retention = "In2Weeks"
 Switch ($sBType.ToLower()) {
 	"daily" {
 		$Directory = $DailyPath 
-        $Retention = "In1Week"
+        $Retention = $sDailyDefaultRetention
 	}
 	"weekly" {
 		$Directory = $WeeklyPath 
-        $Retention = "In2Weeks"
+        $Retention = $sWeeklyDefaultRetention
 	}
 	"monthly" {
 		$Directory = $MonthlyPath 
-        $Retention = "In1Month"
+        $Retention = $sMonthlyDefaultRetention
 	}
 	Default {"BType Out of range"; exit}
 }
@@ -46,12 +46,8 @@ if(-not($VmName)) { Throw "You must supply a value for -VmName" }
 $VMNames = $VmName
 wlog ("VM to backup is $VMNames")
 
-# Directory that VM backups should go to (Mandatory; for instance, C:\Backup)
-# $Directory = "F:\VeeamBackups\Weekly"
-# Desired compression level (Optional; Possible values: 0 - None, 4 - Dedupe-friendly, 5 - Optimal, 6 - High, 9 - Extreme) 
-$CompressionLevel = "5"
-# Quiesce VM when taking snapshot (Optional; VMware Tools are required; Possible values: $True/$False)
-$EnableQuiescence = $True
+$CompressionLevel = $iDefaultCompressionLevel
+$EnableQuiescence = $bDefaultEnableQuiescencePolicy
 # Protect resulting backup with encryption key (Optional; $True/$False)
 $EnableEncryption = $False
 # Encryption Key (Optional; path to a secure string)
@@ -94,7 +90,7 @@ foreach ($VMName in $VMNames)
 	}
 	Else 
 	{
-		wlog ("Start-VBRZip")
+		wlog ("Start-VBRZip with compression $CompressionLevel and retention $Retention")
 		$ZIPSession = Start-VBRZip -Entity $VM -Folder $Directory -Compression $CompressionLevel -DisableQuiesce:(!$EnableQuiescence) -AutoDelete $Retention 
 	}
 
