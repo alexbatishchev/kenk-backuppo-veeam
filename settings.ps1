@@ -27,6 +27,18 @@ $veeamId = "veeam1"
 $DailyPath 		= "D:\VeeamBackups\Daily"
 $WeeklyPath 	= "F:\VeeamBackups\Weekly"
 $MonthlyPath 	= "H:\VeeamBackups\Monthly"
+###########################################
+# Retention Policies and compression (https://helpcenter.veeam.com/docs/backup/powershell/start-vbrzip.html?ver=100)
+# Desired compression level (Optional; Possible values: 0 - None, 4 - Dedupe-friendly, 5 - Optimal, 6 - High, 9 - Extreme) 
+$iDefaultCompressionLevel = 6
+# Quiesce VM when taking snapshot (Optional; VMware Tools are required; Possible values: $True/$False)
+$bDefaultEnableQuiescencePolicy = $true
+
+$sDailyDefaultRetention = "In1Week"
+$sWeeklyDefaultRetention = "In2Weeks"
+$sMonthlyDefaultRetention = "In1Month"
+
+$sSizeSortingPolicy = "SmallFirst" # "BigFirst", "None"
 #################################################
 New-Item -ItemType Directory -Force -Path $DailyPath 
 New-Item -ItemType Directory -Force -Path $WeeklyPath 

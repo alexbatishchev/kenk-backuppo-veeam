@@ -5,7 +5,7 @@ Searching for virtual machines in vSphere tagged with set of notes and starting 
 
 Original script VeeamZIP.ps1 by Vladimir Eremin http://forums.veeam.com/member31097.html
 
-v 1.03
+v 1.04
 
 # how to use
 * plan one ore more backup plans for VMs, for example
@@ -20,3 +20,14 @@ v 1.03
     * with working path C:\scripts\kenk-backuppo-veeam\
 * add tags to descriptions of your VMs like "{veeam1-daily}, {veeam1-monthly}, {veeam1-weekly}
 
+
+# version history
+## v1.03 
+initial public version
+
+## v1.04
+* moved to settings variables for QuiescencePolicy, DefaultRetention policies and  CompressionLevel
+
+* added support of backup order settings (as got vm's from vc, or sorted by total disk size descending/ascending)
+
+* log improvements
